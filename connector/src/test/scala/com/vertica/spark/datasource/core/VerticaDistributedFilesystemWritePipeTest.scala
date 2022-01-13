@@ -33,7 +33,7 @@ class VerticaDistributedFilesystemWritePipeTest extends AnyFlatSpec with BeforeA
   private val tablename = TableName("dummy", None)
   private val tempTableName = TableName("dummy_id", None)
   private val jdbcConfig = JDBCConfig(
-    "1.1.1.1", 1234, "test", BasicJdbcAuth("test", "test"), JDBCTLSConfig(tlsMode = Require, None, None, None, None))
+    "1.1.1.1", 1234, "test", None, BasicJdbcAuth("test", "test"), JDBCTLSConfig(tlsMode = Require, None, None, None, None))
   private val fileStoreConfig = TestObjects.fileStoreConfig
   private val strlen = 1024
 

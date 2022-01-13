@@ -56,6 +56,7 @@ case class KerberosAuth(username: String,
 final case class JDBCConfig(host: String,
                             port: Int,
                             db: String,
+			    backUpServerNodes: Option[String],
                             auth: JdbcAuth,
                             tlsConfig: JDBCTLSConfig)
 

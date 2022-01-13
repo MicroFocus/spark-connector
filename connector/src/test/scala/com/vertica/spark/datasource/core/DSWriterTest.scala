@@ -29,7 +29,7 @@ trait DummyWritePipe extends VerticaPipeInterface with VerticaPipeWriteInterface
 class DSWriterTest extends AnyFlatSpec with BeforeAndAfterAll with MockFactory {
   val tablename: TableName = TableName("testtable", None)
   val jdbcConfig: JDBCConfig = JDBCConfig(
-    "1.1.1.1", 1234, "test", BasicJdbcAuth("test", "test"), JDBCTLSConfig(tlsMode = Require, None, None, None, None))
+    "1.1.1.1", 1234, "test", None, BasicJdbcAuth("test", "test"), JDBCTLSConfig(tlsMode = Require, None, None, None, None))
   val fileStoreConfig: FileStoreConfig = TestObjects.fileStoreConfig
   val config: DistributedFilesystemWriteConfig = DistributedFilesystemWriteConfig(
     jdbcConfig = jdbcConfig,

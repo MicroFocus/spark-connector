@@ -355,4 +355,11 @@ class DSConfigSetupUtilsTest extends AnyFlatSpec with BeforeAndAfterAll with Moc
     val v = getErrorOrAssert[ConnectorError](DSConfigSetupUtils.getCreateExternalTable(opts))
     assert(v.toNonEmptyList.head.isInstanceOf[InvalidCreateExternalTableOption])
   }
+
+  it should "parse backup server node address" in {
+     val server = "host2"
+     val opts = Map("backup_server_node" -> server)
+     val serverName = getResultOrAssert[Option[String]](DSConfigSetupUtils.getBackupServerNode(opts))
+     assert(serverName == server)
+  }
 }

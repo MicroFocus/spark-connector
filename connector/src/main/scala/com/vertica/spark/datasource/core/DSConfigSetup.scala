@@ -271,6 +271,13 @@ object DSConfigSetupUtils {
         "fs.s3a.connection.ssl.enabled", _ => None.validNec))
   }
 
+  def getBackupServerNode(config: Map[String, String]): ValidationResult[Option[String]] = {
+    config.get("backup_server_node") match {
+      case Some(backUpServer) => Some(backUpServer).validNec
+      case None => None.validNec
+    }
+  }
+
   private def getAWSArg(visibility: Visibility)(
                  config: Map[String, String],
                  connectorOption: String,
@@ -421,6 +428,7 @@ object DSConfigSetupUtils {
     (DSConfigSetupUtils.getHost(config),
     DSConfigSetupUtils.getPort(config),
     DSConfigSetupUtils.getDb(config),
+    DSConfigSetupUtils.getBackupServerNode(config),
     DSConfigSetupUtils.validateAndGetJDBCAuth(config),
     DSConfigSetupUtils.validateAndGetJDBCSSLConfig(config)).mapN(JDBCConfig)
   }
