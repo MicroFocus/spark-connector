@@ -360,6 +360,6 @@ class DSConfigSetupUtilsTest extends AnyFlatSpec with BeforeAndAfterAll with Moc
      val server = "host2"
      val opts = Map("backup_server_node" -> server)
      val serverName = getResultOrAssert[Option[String]](DSConfigSetupUtils.getBackupServerNode(opts))
-     assert(serverName == server)
+     assert(serverName.getOrElse("") == server)
   }
 }
