@@ -27,7 +27,8 @@ properties([
                         pushd ${WORKSPACE}
                             cd connector
                             sbt package
-                            mv target/scala-2.12/spark-vertica-connector_2.12-*.jar target/scala-2.12/vertica-spark-2.0.3.jar
+                            artifact_name="vertica-spark-2.0.3.${BUILD_NUMBER}.jar"
+                            mv target/scala-2.12/spark-vertica-connector_2.12-*.jar target/scala-2.12/${artifact_name}
                         popd
                     '''
                 }
@@ -46,7 +47,7 @@ properties([
                     spec: """{
                             "files": [
                                     {
-                                        "pattern": "${WORKSPACE}/connector/target/scala-2.12/vertica-spark-2.0.3.jar",
+                                        "pattern": "${WORKSPACE}/connector/target/scala-2.12/vertica-spark-2.0.3.${BUILD_NUMBER}.jar",
                                         "target": "ext-release-local/com/vertica/spark/vertica-spark/2.0.3/"
                                     }
                                 ]
