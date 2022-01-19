@@ -48,7 +48,7 @@ properties([
                             "files": [
                                     {
                                         "pattern": "${WORKSPACE}/connector/target/scala-2.12/vertica-spark-2.0.3.${BUILD_NUMBER}.jar",
-                                        "target": "ext-release-local/com/vertica/spark/vertica-spark/2.0.3/"
+                                        "target": "ext-release-local/com/vertica/spark/vertica-spark/2.0.3.${BUILD_NUMBER}/"
                                     }
                                 ]
                             }"""
